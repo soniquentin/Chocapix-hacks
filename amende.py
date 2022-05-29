@@ -74,8 +74,8 @@ def give_amende(s,token,account_dict) :
     window.minsize(300,100)
 
     def clickMe(): ##Click function
-        global s
-        payload = {"items":[{"qty":int(qty.get()),"sellitem":49844}],"accounts":[{"account":account_dict[criminel.get()],"ratio":1,"amount":3}],"name":"Amende","type":"meal"}
+        global s, amende_food
+        payload = {"items":[{"qty":int(qty.get()),"sellitem":amende_food}],"accounts":[{"account":account_dict[criminel.get()],"ratio":1,"amount":3}],"name":"Amende","type":"meal"}
         result = s.post(url_transaction, json = payload, headers = {"Authorization": "JWT "+ token} )
         if "Amende" in result.text :
             new_string = "Amende donnée avec succès ! Merci pour votre contribution face aux menaces criminels de ce BE."
